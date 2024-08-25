@@ -5,25 +5,14 @@ import productRoutes from "./routes/product.routes.js";
 dotenv.config();
 
 const app = express();
+console.log(process.env.PORT);
+const port = process.env.PORT || 6000;
 
 //  middlewares
 app.use(express.json());
-
 app.use("/api/products", productRoutes);
 
-// // get all product
-// app.get("/api/products");
-
-// // create productt
-// app.post("/api/products");
-
-// //  delete product
-// app.delete("/api/products/:id");
-
-// // update document
-// app.put("/api/products/:id");
-
-app.listen(5000, () => {
+app.listen(port, () => {
    connectDB();
-   console.log(`Server running on port number ${5000}`);
+   console.log(`Server running on port number ${port}`);
 });
