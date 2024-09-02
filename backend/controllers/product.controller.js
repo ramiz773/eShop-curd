@@ -37,11 +37,9 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
    const { id } = req.params;
    const product = req.body;
-
+   console.log(id, product);
    if (!mongoose.isValidObjectId) {
-      return res
-         .status(404)
-         .json({ success: false, error: "Invalid product id" });
+      return res.status(404).json({ success: false, error: "Invalid product id" });
    }
    try {
       const updatedProduct = await Product.findByIdAndUpdate(id, product, {
@@ -61,9 +59,7 @@ const deleteProduct = async (req, res) => {
    const { id } = req.params;
 
    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res
-         .status(404)
-         .json({ success: false, message: "Invalid product id" });
+      return res.status(404).json({ success: false, message: "Invalid product id" });
    }
 
    try {
